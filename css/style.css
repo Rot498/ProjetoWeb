@@ -1,0 +1,282 @@
+:root{
+  --bg:#ffffff;
+  --text:#000000;
+  --dark:#333333;
+  --mid:#777777;
+  --accent:#111111;
+  --max-width:1200px;
+  --gap:16px;
+  --radius:8px;
+  --brand-font: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* ========== Reset / Base ========== */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--brand-font);
+  -webkit-font-smoothing:antialiased;
+  font-kerning: normal; /* corrigido aqui */
+  line-height:1.4;
+}
+
+
+/* ========== Layout principal ========== */
+.site-header{
+  border-bottom:1px solid #eee;
+  padding:12px 16px;
+  background: linear-gradient(180deg,#fff,#f8f8f8);
+}
+
+.header-topo{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  max-width:var(--max-width);
+  margin:0 auto;
+  gap:var(--gap);
+}
+
+.logo{
+  font-weight:700;
+  font-size:1.25rem;
+  color:var(--accent);
+  text-decoration:none;
+  letter-spacing:0.2px;
+}
+
+.main-nav{ display:flex; align-items:center; gap:12px; }
+.nav-list{ display:flex; gap:12px; list-style:none; margin:0; padding:0; align-items:center;}
+.nav-list li a{
+  text-decoration:none;
+  color:var(--dark);
+  padding:6px 10px;
+  display:inline-block;
+  border-radius:6px;
+}
+.nav-list li a:hover, .nav-list li a:focus{
+  background:#f2f2f2;
+  outline:none;
+}
+
+/* burger (elemento opicional) */
+#site-burger{
+  display:none;
+  background:none;
+  border:0;
+  font-size:1.2rem;
+  cursor:pointer;
+}
+
+/* ========== Promo / Carrossel ========== */
+.promo-carolsel{
+  max-width:var(--max-width);
+  margin:20px auto;
+  padding:8px 12px;
+}
+.carousel-slide{
+  background:#f2f2f2;
+  padding:20px;
+  border-radius:8px;
+  margin-bottom:8px;
+}
+
+/* ========== Busca ======== */
+.search-bar{
+  max-width:var(--max-width);
+  margin:12px auto;
+  display:flex;
+  gap:12px;
+  padding:0 12px;
+  align-items:center;
+  justify-content:center;
+}
+
+.free-search{ display:flex; gap:8px; width:100%; max-width:760px; }
+.free-search input[type="text"], .free-search input[type="search"]{
+  flex:1;
+  padding:10px 12px;
+  border-radius:6px;
+  border:1px solid #ddd;
+  background:white;
+  font-size:1rem;
+}
+.free-search button{
+  padding:10px 14px;
+  border-radius:6px;
+  border:0;
+  background:var(--dark);
+  color:white;
+  cursor:pointer;
+}
+
+/* vehicle-search (quando implementado) */
+.vehicle-search select, .vehicle-search button{
+  padding:8px 10px;
+  border-radius:6px;
+  border:1px solid #ddd;
+}
+
+/* ========== Categories ========== */
+.categories{
+  max-width:var(--max-width);
+  margin:20px auto;
+  padding:0 12px;
+}
+.category-list{
+  display:flex;
+  gap:12px;
+  list-style:none;
+  padding:0;
+  margin:8px 0 0 0;
+}
+.category-list li button{
+  padding:10px 14px;
+  border-radius:8px;
+  border:0;
+  background:var(--dark);
+  color:#fff;
+  cursor:pointer;
+}
+.category-list li button:hover{ background:var(--accent); }
+
+/* ========== Produtos / Cards ========== */
+.featured-prducts{
+  max-width:var(--max-width);
+  margin:20px auto;
+  padding:0 12px;
+}
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  margin-top:12px;
+}
+
+.product-card{
+  border:1px solid #eee;
+  padding:12px;
+  border-radius:8px;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.product-card img{
+  max-width:100%;
+  height:140px;
+  object-fit:cover;
+  border-radius:6px;
+}
+.product-card h3{ margin:4px 0 0; font-size:1.05rem; }
+.product-card p{ color:var(--mid); font-size:0.95rem; margin:0; }
+.product-card a, .product-card button{
+  align-self:flex-start;
+  margin-top:auto;
+  padding:8px 12px;
+  border-radius:6px;
+  border:0;
+  background:var(--dark);
+  color:white;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+/* ========== Cookie banner ========== */
+#cookie-banner{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  background:#fff;
+  border:1px solid #ddd;
+  padding:12px;
+  border-radius:8px;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  display:none; /* mostra via JS quando necessário */
+}
+#cookie-banner p{ margin:0 0 8px 0; font-size:0.95rem; }
+#cookie-banner .cookie-actions{ display:flex; gap:8px; justify-content:flex-end; }
+#cookie-banner button{ padding:8px 10px; border-radius:6px; border:0; cursor:pointer; }
+
+/* ========== Tabelas (carrinho / admin) ========== */
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+  border-radius:6px;
+  overflow:hidden;
+}
+thead th{
+  text-align:left;
+  padding:12px;
+  background:#fafafa;
+  border-bottom:1px solid #eee;
+  font-weight:600;
+}
+tbody td{
+  padding:10px 12px;
+  border-bottom:1px solid #f2f2f2;
+}
+table button{
+  padding:6px 10px;
+  border-radius:6px;
+  border:0;
+  background:#d9534f;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* ========== Forms (gerais) ========== */
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea, select{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid #ddd;
+  border-radius:6px;
+  margin-top:6px;
+  margin-bottom:12px;
+  font-size:1rem;
+}
+button[type="submit"], .botao-finalizar{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:8px;
+  border:0;
+  background:var(--dark);
+  color:white;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+/* ========== Rodapé ========== */
+.site-footer{
+  border-top:1px solid #eee;
+  margin-top:40px;
+  padding:20px 12px;
+  text-align:center;
+  color:var(--mid);
+}
+
+/* ========== Pequenos utilitários ========== */
+.conteudo{ max-width:var(--max-width); margin:20px auto; padding:0 12px; }
+.hint{ color:var(--mid); font-size:0.9rem; }
+
+/* ========== Acessibilidade: quando usuario navega por teclado ========== */
+.user-is-tabbing a:focus, .user-is-tabbing button:focus, .user-is-tabbing input:focus, .user-is-tabbing select:focus {
+  outline:3px solid #cbe7ff;
+  outline-offset:2px;
+}
+
+/* ========== Responsividade ========== */
+@media (max-width: 800px) {
+  #site-burger{ display:block; }
+  .nav-list{ display:none; }
+  .header-topo{ padding:12px; }
+  .product-card{ padding:10px; }
+  .free-search{ flex-direction:column; gap:8px; }
+  table thead{ display:none; }
+  table tbody td{ display:block; width:100%; box-sizing:border-box; }
+  table tbody tr{ margin-bottom:12px; display:block; border:1px solid #eee; border-radius:8px; overflow:hidden; }
+}

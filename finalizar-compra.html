@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopeças — Finalizar Compra</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/finalizar-compra.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-topo">
+      <a class="logo" href="index.html">Stopeças</a>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <h2>Finalizar Compra</h2>
+    <form id="formFinalizar">
+      <fieldset>
+        <legend>Dados Pessoais</legend>
+        <input type="text" id="nome" placeholder="Nome completo" required>
+        <input type="email" id="email" placeholder="E-mail" required>
+      </fieldset>
+
+      <fieldset>
+        <legend>Endereço de Entrega</legend>
+        <input type="text" id="endereco" placeholder="Rua, número" required>
+        <input type="text" id="cidade" placeholder="Cidade" required>
+        <input type="text" id="cep" placeholder="CEP" required>
+      </fieldset>
+
+      <fieldset>
+        <legend>Forma de Pagamento</legend>
+        <label><input type="radio" name="pagamento" value="pix" required> Pix</label>
+        <label><input type="radio" name="pagamento" value="boleto"> Boleto</label>
+        <label><input type="radio" name="pagamento" value="cartao"> Cartão</label>
+      </fieldset>
+
+      <button type="submit">Confirmar Pedido</button>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; Stopeças 2025</p>
+  </footer>
+</body>
+</html>

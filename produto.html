@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopeças — Produto</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/carrinho.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-topo">
+      <a class="logo" href="index.html">Stopeças</a>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <div id="produtoDetalhes" style="padding:20px; text-align:center;">
+      <p>Carregando produto...</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; Stopeças 2025</p>
+  </footer>
+
+<script src="js/produtosFake.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('listaProdutos');
+  if (!container) return;
+  container.innerHTML = produtos.map(p => `
+    <div class="product-card">
+      <img src="${p.imagem}" alt="${p.nome}">
+      <h3>${p.nome}</h3>
+      <p>${p.descricao}</p>
+      <p><strong>R$ ${p.preco.toFixed(2)}</strong></p>
+      <a href="produto.html?id=${p.id}">Ver Detalhes</a>
+    </div>
+  `).join('');
+});
+</script>
+
+</body>
+</html>

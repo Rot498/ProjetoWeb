@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stopeças — Adicionar/Editar Produto</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/admin.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-topo">
+      <a class="logo" href="produtos.html">Editar Produto</a>
+    </div>
+  </header>
+
+  <main class="search-bar">
+    <h2>Adicionar produto</h2>
+    <form id="formProduto">
+      <label for="codigo">Código</label>
+      <input id="codigo" required placeholder="Ex: P-1003">
+      <label for="nomeProd">Nome</label>
+      <input id="nomeProd" required>
+      <label for="marcaProd">Marca</label>
+      <input id="marcaProd" required>
+      <label for="precoProd">Preço</label>
+      <input id="precoProd" type="number" step="0.01" required>
+      <label for="descricaoProd">Descrição</label>
+      <textarea id="descricaoProd" rows="4"></textarea>
+      <button type="submit">Salvar</button>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; Stopeças 2025</p>
+  </footer>
+</body>
+</html>

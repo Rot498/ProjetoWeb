@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stopeças — Início</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/busca.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-topo">
+      <a class="logo" href="index.html">Stopeças</a>
+      <nav class="main-nav" aria-label="principal">
+        <ul class="nav-list">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="produto.html">Produtos</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="cadastro-cliente.html">Cadastro</a></li>
+          <li><a href="suporte.html">Suporte</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="promo-carolsel">
+    <div class="carousel-slide">
+      <h2>Promoções da Semana</h2>
+      <p>As melhores peças com segurança e confiança.</p>
+    </div>
+  </section>
+
+  <section class="search-bar">
+    <form id="formBusca" class="free-search">
+      <input type="text" id="campoBusca" placeholder="Buscar por código ou nome da peça">
+      <button type="submit">Pesquisar</button>
+    </form>
+  </section>
+
+  <section class="categories">
+    <h3>Categorias</h3>
+    <ul class="category-list">
+      <li><button data-cat="Motor">Motor</button></li>
+      <li><button data-cat="Freios">Freios</button></li>
+      <li><button data-cat="Elétrica">Elétrica</button></li>
+      <li><button data-cat="Suspensão">Suspensão</button></li>
+    </ul>
+  </section>
+
+  <section class="featured-prducts">
+    <h3>Promoções</h3>
+    <div class="products-grid" id="listaProdutos"></div>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; Stopeças 2025 - Todos os direitos reservados</p>
+  </footer>
+</body>
+
+<script src="js/produtosFake.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('listaProdutos');
+  if (!container) return;
+
+  // gera cards a partir do arquivo produtosFake.js
+  container.innerHTML = produtos.map(p => `
+    <div class="product-card">
+      <img src="${p.imagem}" alt="${p.nome}">
+      <h3>${p.nome}</h3>
+      <p>${p.descricao}</p>
+      <p><strong>R$ ${p.preco.toFixed(2)}</strong></p>
+      <a href="produto.html?id=${p.id}">Ver Detalhes</a>
+    </div>
+  `).join('');
+});
+</script>
+
+</html>
