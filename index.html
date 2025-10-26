@@ -47,6 +47,7 @@
     </ul>
   </section>
 
+
   <section class="featured-prducts">
     <h3>Promoções</h3>
     <div class="products-grid" id="listaProdutos"></div>
@@ -55,7 +56,6 @@
   <footer class="site-footer">
     <p>&copy; Stopeças 2025 - Todos os direitos reservados</p>
   </footer>
-</body>
 
 <script src="js/produtosFake.js"></script>
 <script>
@@ -63,17 +63,44 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('listaProdutos');
   if (!container) return;
 
-  // gera cards a partir do arquivo produtosFake.js
+  // Gera os cards com imagens e informações dos produtos
   container.innerHTML = produtos.map(p => `
     <div class="product-card">
       <img src="${p.imagem}" alt="${p.nome}">
       <h3>${p.nome}</h3>
       <p>${p.descricao}</p>
       <p><strong>R$ ${p.preco.toFixed(2)}</strong></p>
-      <a href="produto.html?id=${p.id}">Ver Detalhes</a>
+      <a href="produto.html?id=${p.id}" class="botao-finalizar">Ver Detalhes</a>
     </div>
   `).join('');
+
+  // Aplica estilo automaticamente em todas as imagens criadas via JS
+  container.querySelectorAll('img').forEach(img => {
+    img.style.width = "100%";
+    img.style.maxWidth = "500px";
+    img.style.height = "auto";
+    img.style.display = "block";
+    img.style.borderRadius = "8px";
+    img.style.margin = "0 auto";
+    img.style.boxShadow = "0 4px 8px rgba(0,0,0,0.3)";
+  });
 });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const botoes = document.querySelectorAll(".category-list button");
+
+  botoes.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const categoria = btn.getAttribute("data-cat");
+      // Redireciona para a página de categoria com o nome na URL
+      window.location.href = `categoria.html?nome=${encodeURIComponent(categoria)}`;
+    });
+  });
+});
+</script>
+
+
+</body>
 </html>

@@ -22,7 +22,14 @@ body{
   font-kerning: normal; /* corrigido aqui */
   line-height:1.4;
 }
-
+/* todas as imagens se ajustam automaticamente */
+img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+}
 
 /* ========== Layout principal ========== */
 .site-header{
