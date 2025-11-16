@@ -1,16 +1,6 @@
-/**
- * main.js - Comportamentos front-end globais
- * - Toggle do menu móvel (burger)
- * - Banner de cookies (grava cookie simples)
- * - Pequenas melhorias de acessibilidade
- *
- * Coloque em: js/main.js
- */
-
 (function () {
   'use strict';
 
-  // --- Helpers (pequenas utilidades) ---
   function qs(sel) { return document.querySelector(sel); }
   function qsa(sel) { return Array.from(document.querySelectorAll(sel)); }
 
@@ -84,14 +74,12 @@
       }
     }
 
-    // --- Small accessibility: add focus states for keyboard users ---
     document.addEventListener('keyup', function (e) {
       if (e.key === 'Tab') {
         document.body.classList.add('user-is-tabbing');
       }
     });
 
-    // --- Progressive enhancement: replace placeholders for images without src ---
     qsa('img').forEach(img => {
       if (!img.getAttribute('src') || img.getAttribute('src').trim() === '') {
         img.src = 'assets/img/produtos/placeholder.png';

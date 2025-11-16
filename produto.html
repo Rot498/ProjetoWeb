@@ -1,45 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stopeças — Produto</title>
+  <title>Stopeças — Produtos</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/carrinho.js" defer></script>
+  <script src="js/produtosFake.js" defer></script>
+  <script src="js/produtos.js" defer></script>
 </head>
+
 <body>
   <header class="site-header">
     <div class="header-topo">
       <a class="logo" href="index.html">Stopeças</a>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li>
+            <a href="carrinho.html" id="linkCarrinho">Carrinho <span id="contadorCarrinho" class="contador-carrinho"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </header>
 
   <main class="conteudo">
-    <div id="produtoDetalhes" style="padding:20px; text-align:center;">
-      <p>Carregando produto...</p>
-    </div>
-  </main>
+    <section class="featured-prducts">
+      <h1>Lista de Produtos</h1>
+  <div id="lista-produtos"></div>
 
-  <footer class="site-footer">
-    <p>&copy; Stopeças 2025</p>
-  </footer>
+  <script>
+  const API = 'http://localhost:3000/api/produtos';
 
-<script src="js/produtosFake.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const container = document.getElementById('listaProdutos');
-  if (!container) return;
-  container.innerHTML = produtos.map(p => `
-    <div class="product-card">
-      <img src="${p.imagem}" alt="${p.nome}">
-      <h3>${p.nome}</h3>
-      <p>${p.descricao}</p>
-      <p><strong>R$ ${p.preco.toFixed(2)}</strong></p>
-      <a href="produto.html?id=${p.id}">Ver Detalhes</a>
-    </div>
-  `).join('');
-});
-</script>
+  async function carregarProdutos() {
+    try {
+      const res = await fetch(API);
+      const produtos = await res.json();
+      const container = document.getElementById('lista-produtos');
+      container.innerHTML = produtos.map(p => `
+        <div class="produto-card" data-id="${p.id}">
+          <img src="${p.imagem}" alt="${p.nome}" style="max-width:120px"/>
+          <div class="produto-info">
+            <h3>${p.nome}</h3>
+            <p>${p.descricao || ''}</p>
+            <p>R$ ${Number(p.preco).toFixed(2)}</p>
+            <button onclick="verDetalhes(${p.id})">Ver Detalhes</button>
+            <button onclick="adicionarAoCarrinho(${p.id})">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+      `).join('');
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
+  function verDetalhes(id) { window.location.href = `detalhes.html?id=${id}`; }
+
+  function adicionarAoCarrinho(id) {
+    const carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
+    const item = carrinho.find(i => i.id === id);
+    if (item) item.qtd++;
+    else carrinho.push({ id, qtd: 1 });
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    alert('Produto adicionado ao carrinho');
+  }
+
+  document.addEventListener('DOMContentLoaded', carregarProdutos);
+  </script>
 </body>
 </html>

@@ -57,7 +57,7 @@ function atualizarTabelaAdmin() {
 
 function editar(codigo) {
   alert('Edição simulada: ' + codigo + '. Use a tela de editar para alterar (simulação).');
-  window.location.href = 'produto-editar.html';
+  window.location.href = '../produto.html';
 }
 
 function excluir(codigo) {

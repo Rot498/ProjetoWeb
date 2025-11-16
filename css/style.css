@@ -55,8 +55,19 @@ img {
   letter-spacing:0.2px;
 }
 
-.main-nav{ display:flex; align-items:center; gap:12px; }
-.nav-list{ display:flex; gap:12px; list-style:none; margin:0; padding:0; align-items:center;}
+.main-nav{ 
+  display:flex; 
+  align-items:center; 
+  gap:12px; 
+}
+.nav-list{ 
+  display:flex; 
+  gap:12px; 
+  list-style:none; 
+  margin:0; 
+  padding:0; 
+  align-items:center;
+}
 .nav-list li a{
   text-decoration:none;
   color:var(--dark);
@@ -102,7 +113,12 @@ img {
   justify-content:center;
 }
 
-.free-search{ display:flex; gap:8px; width:100%; max-width:760px; }
+.free-search{ 
+  display:flex; 
+  gap:8px; 
+  width:100%; 
+  max-width:760px; 
+}
 .free-search input[type="text"], .free-search input[type="search"]{
   flex:1;
   padding:10px 12px;
@@ -178,8 +194,15 @@ img {
   object-fit:cover;
   border-radius:6px;
 }
-.product-card h3{ margin:4px 0 0; font-size:1.05rem; }
-.product-card p{ color:var(--mid); font-size:0.95rem; margin:0; }
+.product-card h3{ 
+  margin:4px 0 0; 
+  font-size:1.05rem; 
+}
+.product-card p{ 
+  color:var(--mid); 
+  font-size:0.95rem; 
+  margin:0; 
+}
 .product-card a, .product-card button{
   align-self:flex-start;
   margin-top:auto;
@@ -204,9 +227,20 @@ img {
   box-shadow:0 6px 18px rgba(0,0,0,.06);
   display:none; /* mostra via JS quando necessário */
 }
-#cookie-banner p{ margin:0 0 8px 0; font-size:0.95rem; }
-#cookie-banner .cookie-actions{ display:flex; gap:8px; justify-content:flex-end; }
-#cookie-banner button{ padding:8px 10px; border-radius:6px; border:0; cursor:pointer; }
+#cookie-banner p{ 
+  margin:0 0 8px 0; 
+  font-size:0.95rem; 
+}
+#cookie-banner .cookie-actions{ 
+  display:flex; 
+  gap:8px; 
+  justify-content:flex-end; 
+}
+#cookie-banner button{ 
+  padding:8px 10px; 
+  border-radius:6px; 
+  border:0; cursor:pointer; 
+}
 
 /* ========== Tabelas (carrinho / admin) ========== */
 table{
@@ -267,9 +301,15 @@ button[type="submit"], .botao-finalizar{
 }
 
 /* ========== Pequenos utilitários ========== */
-.conteudo{ max-width:var(--max-width); margin:20px auto; padding:0 12px; }
-.hint{ color:var(--mid); font-size:0.9rem; }
-
+.conteudo{ 
+  max-width:var(--max-width); 
+  margin:20px auto; 
+  padding:0 12px; 
+}
+.hint{ 
+  color:var(--mid); 
+  font-size:0.9rem; 
+}
 /* ========== Acessibilidade: quando usuario navega por teclado ========== */
 .user-is-tabbing a:focus, .user-is-tabbing button:focus, .user-is-tabbing input:focus, .user-is-tabbing select:focus {
   outline:3px solid #cbe7ff;

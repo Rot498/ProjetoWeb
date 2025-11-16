@@ -30,7 +30,7 @@
           }
         }
 
-        // Cliente comum (simulação)
+        // Cliente comum 
         window.location.href = 'index.html';
       });
     }
@@ -40,11 +40,11 @@
     if (formCadastro) {
       formCadastro.addEventListener('submit', function (e) {
         e.preventDefault();
-        alert('Cadastro realizado com sucesso! Faça login para continuar.');
+        alert('Cadastro realizado com sucesso!');
         // Redireciona após 2 segundos
         setTimeout(() => {
           window.location.href = 'login.html';
-        }, 2000);
+        }, 3);
       });
     }
 
@@ -80,6 +80,5 @@
         }, 500);
       });
     }
-
   });
 })();
