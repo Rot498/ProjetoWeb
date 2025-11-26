@@ -41,10 +41,11 @@
       formCadastro.addEventListener('submit', function (e) {
         e.preventDefault();
         alert('Cadastro realizado com sucesso!');
+
         // Redireciona após 2 segundos
-        setTimeout(() => {
+       setTimeout(() => {
           window.location.href = 'login.html';
-        }, 3);
+        }, 500);
       });
     }
 

@@ -4,13 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stopeças — Pedido Confirmado</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/carrinho.js" defer></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/carrinho-header.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-  <header class="site-header">
+    <header class="site-header">
     <div class="header-topo">
+      <button id="site-burger" aria-label="Abrir menu" aria-expanded="false" class="d-md-none ms-auto">☰</button>
       <a class="logo" href="index.html">Stopeças</a>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="produto.html">Produtos</a></li>
+          <li><a href="categoria.html">Categorias</a></li>
+          <li><a href="suporte.html">Suporte</a></li>
+        </ul>
+      </nav>
+      <a href="carrinho.html" class="cart-link" aria-label="Ir para o carrinho">
+        🛒 <span id="contadorCarrinho" class="contador-carrinho">0</span>
+      </a>
     </div>
   </header>
 
@@ -25,5 +41,14 @@
   <footer class="site-footer">
     <p>&copy; Stopeças 2025</p>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      var el = document.getElementById('protocolo');
+      if (el){
+        el.textContent = '#' + Math.floor(Math.random() * 90000 + 10000);
+      }
+    });
+  </script>
 </body>
 </html>

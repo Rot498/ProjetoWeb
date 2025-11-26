@@ -1,16 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('formBusca');
   if (!form) return;
-  form.addEventListener('submit', (e) => {
+
+  const API = typeof window.API_PRODUTOS !== "undefined" ? window.API_PRODUTOS : `http://${window.location.hostname || "localhost"}:3000/api/produtos`;
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const q = document.getElementById('campoBusca').value.trim().toLowerCase();
+    const campo = document.getElementById('campoBusca');
+    if (!campo) return;
+    const q = campo.value.trim();
     if (!q) return;
-    // procura por id ou nome
-    const found = produtos.filter(p => p.id.toLowerCase().includes(q) || p.nome.toLowerCase().includes(q));
-    if (found.length === 0) {
-      alert('Nenhum resultado encontrado.');
-      return;
+
+    try {
+      const params = new URLSearchParams({ q });
+      const res = await fetch(API + '?' + params.toString());
+      const lista = await res.json();
+      if (!Array.isArray(lista) || lista.length === 0) {
+        alert('Nenhum resultado encontrado.');
+        return;
+      }
+      const primeiro = lista[0];
+      window.location.href = `detalhes.html?id=${encodeURIComponent(primeiro.id)}`;
+    } catch (err) {
+      console.error(err);
+      alert('Erro ao buscar produtos.');
     }
-    window.location.href = `produto.html?id=${found[0].id}`;
   });
 });

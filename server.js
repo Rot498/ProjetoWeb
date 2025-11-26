@@ -27,7 +27,23 @@ function writeProducts(produtos) {
 
 // Endpoints
 app.get('/api/produtos', (req, res) => {
-  const produtos = readProducts();
+  let produtos = readProducts();
+  const { q, id } = req.query;
+
+  if (id) {
+    const idNum = Number(id);
+    const filtrados = produtos.filter(p => String(p.id) === String(idNum));
+    return res.json(filtrados);
+  }
+
+  if (q) {
+    const termo = String(q).toLowerCase();
+    produtos = produtos.filter(p =>
+      String(p.id).toLowerCase().includes(termo) ||
+      String(p.nome || '').toLowerCase().includes(termo)
+    );
+  }
+
   res.json(produtos);
 });
 

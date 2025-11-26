@@ -4,13 +4,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Stopeças — Início</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/carrinho-header.js" defer></script>
+  <script src="js/promo-carousel.js" defer></script>
+  <script src="js/index.js" defer></script>
   <script src="js/busca.js" defer></script>
-</head>
+  <script src="js/categorias-nav.js" defer></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js" defer></script>
+</head> 
 <body>
-  <header class="site-header">
+    <header class="site-header">
     <div class="header-topo">
-      <a class="logo">Stopeças</a>
+      <button id="site-burger" aria-label="Abrir menu" aria-expanded="false" class="d-md-none ms-auto">☰</button>
+      <a class="logo" href="index.html">Stopeças</a>
       <nav class="main-nav" aria-label="principal">
         <ul class="nav-list">
           <li><a href="produto.html">Produtos</a></li>
@@ -18,15 +28,40 @@
           <li><a href="suporte.html">Suporte</a></li>
         </ul>
       </nav>
+      <a href="carrinho.html" class="cart-link" aria-label="Ir para o carrinho">
+        🛒 <span id="contadorCarrinho" class="contador-carrinho">0</span>
+      </a>
     </div>
   </header>
 
-  <section class="promo-carolsel">
-    <div class="carousel-slide">
+  <section class="promo-carousel">
+  <div class="promo-track">
+    <article class="promo-slide active">
       <h2>Promoções da Semana</h2>
-      <p>As melhores peças com segurança e confiança.</p>
-    </div>
-  </section>
+      <p>Freios com até <strong>20% OFF</strong> em peças selecionadas.</p>
+      <a href="produto.html" class="promo-cta">Ver freios em oferta</a>
+    </article>
+
+    <article class="promo-slide">
+      <h2>Cuide do motor do seu carro</h2>
+      <p>Filtros e óleos com preços especiais.</p>
+      <a href="produto.html" class="promo-cta">Ver itens de motor</a>
+    </article>
+
+    <article class="promo-slide">
+      <h2>Suspensão mais confortável</h2>
+      <p>Amortecedores com condições imperdíveis.</p>
+      <a href="produto.html" class="promo-cta">Ver suspensão</a>
+    </article>
+  </div>
+
+  <div class="promo-dots">
+    <button class="promo-dot active" data-slide="0"></button>
+    <button class="promo-dot" data-slide="1"></button>
+    <button class="promo-dot" data-slide="2"></button>
+  </div>
+</section>
+
 
   <section class="search-bar">
     <form id="formBusca" class="free-search">
@@ -46,50 +81,11 @@
   </section>
 
 
+  
   <section class="featured-prducts">
     <h3>Promoções</h3>
-   <!-- index.html (trecho) -->
-<div id="lista-produtos"></div>
-
-<script>
-const API = 'http://localhost:3000/api/produtos';
-
-async function carregarIndex() {
-  try {
-    const res = await fetch(API);
-    const produtos = await res.json();
-    const container = document.getElementById('lista-produtos');
-    container.innerHTML = produtos.map(p => `
-      <div class="produto-card" data-id="${p.id}">
-        <img src="${p.imagem}" alt="${p.nome}" style="max-width:150px"/>
-        <h3>${p.nome}</h3>
-        <p>R$ ${Number(p.preco).toFixed(2)}</p>
-        <button onclick="verDetalhes(${p.id})">Ver Detalhes</button>
-        <button onclick="adicionarAoCarrinho(${p.id})">Adicionar ao Carrinho</button>
-      </div>
-    `).join('');
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-function verDetalhes(id) {
-  window.location.href = `detalhes.html?id=${id}`;
-}
-
-function adicionarAoCarrinho(id) {
-  const carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
-  const item = carrinho.find(i => i.id === id);
-  if (item) item.qtd++;
-  else carrinho.push({ id, qtd: 1 });
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  alert('Produto adicionado ao carrinho');
-}
-
-document.addEventListener('DOMContentLoaded', carregarIndex);
-</script>
-
-
+    <div id="listaProdutos" class="products-grid"></div>
+  </section>
 <footer class="site-footer">
     <p>&copy; Stopeças 2025 - Todos os direitos reservados</p>
   </footer>
