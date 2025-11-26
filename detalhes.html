@@ -41,7 +41,11 @@
 
   <script>
   document.addEventListener('DOMContentLoaded', function(){
+<<<<<<< HEAD
     const API = (typeof window.API_PRODUTOS !== 'undefined' ? window.API_PRODUTOS : `http://${window.location.hostname || 'localhost'}:3000/api/produtos`);
+=======
+    const API = 'http://localhost:3000/api/produtos';
+>>>>>>> 9ae80f309ff21332e32a7b126e7c4d84f89bd81a
     const params = new URLSearchParams(location.search);
     const id = params.get('id');
     const container = document.getElementById('detalhe');
