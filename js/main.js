@@ -85,12 +85,6 @@
         img.src = 'assets/img/produtos/placeholder.png';
       }
     });
-
-    // --- Carrega produtos se função global existir (produtosFake.js) ---
-    if (typeof renderizarProdutosDestaque === 'function') {
-      try { renderizarProdutosDestaque(); } catch (err) { /* não bloqueia o site */ }
-    }
-
   }); // DOMContentLoaded
 
 })();

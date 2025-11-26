@@ -1,4 +1,3 @@
-// finalizar-compra.js — trata o envio e redireciona para a confirmação
 (function () {
   'use strict';
 
@@ -9,9 +8,12 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       alert('Pedido confirmado! Redirecionando...');
-      const params = new URLSearchParams(window.location.search);
-      const cart = params.get('cart') || '';
-      window.location.href = `confirmacao-pedido.html?cart=${encodeURIComponent(cart)}`;
+      // Limpa carrinho após finalizar
+      localStorage.removeItem('carrinho');
+      if (typeof window.atualizarContadorCarrinho === 'function') {
+        window.atualizarContadorCarrinho();
+      }
+      window.location.href = 'confirmacao-pedido.html';
     });
   });
 })();
